@@ -1,1 +1,1 @@
-export const backendServerHost = "http://localhost:3000";
+export const backendServerHost = "https://techplementtask1backend.onrender.com";
