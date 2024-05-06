@@ -27,7 +27,7 @@ const Quotes = () => {
         getQuotes();
     }, []);
     return (
-        <div className='flex flex-wrap gap-x-1 gap-y-6'>
+        <div className='flex flex-col flex-wrap gap-x-1 gap-y-6'>
             <h2 className='text-3xl text-emerald-400 font-medium ml-3' >
                 <Typewriter
                     words={['Famous Quotes.', 'Inspiring Messages.', 'By Renowned authors,', "great Scientists,etc."]}

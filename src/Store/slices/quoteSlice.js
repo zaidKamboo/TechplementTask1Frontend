@@ -15,8 +15,12 @@ const quoteSlice = createSlice({
                 state.quotes = action.payload;
                 state.q2 = action.payload;
             } else {
-                state.quotes = [...state.quotes, ...action.payload];
-                state.q2 = state.quotes;
+                if (action.payload.one) {
+                    state.quotes.push(action.payload.quote);
+                } else {
+                    state.quotes = [...state.quotes, ...action.payload];
+                    state.q2 = state.quotes;
+                }
             }
         },
         resetQuotes: (state, action) => {

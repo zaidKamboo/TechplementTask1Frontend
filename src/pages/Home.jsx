@@ -1,15 +1,17 @@
-import React, { useEffect } from 'react'
-import SearchBar from '../components/SearchBar'
-import Form from '../components/Form'
-import Quotes from '../components/Quotes'
+import React, { useState, useEffect } from 'react';
+import SearchBar from '../components/SearchBar';
+import Form from '../components/Form';
+import Quotes from '../components/Quotes';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { backendServerHost } from '../constants';
 import { useDispatch, useSelector } from 'react-redux';
 import { setTodaysQuote } from '../Store/slices/quoteSlice';
+
 const Home = () => {
     const dispatch = useDispatch();
-    const quotesInfo = useSelector(store => store.quotesInfo)
+    const quotesInfo = useSelector(store => store.quotesInfo);
+    const [displayedQuote, setDisplayedQuote] = useState('');
+
     useGSAP(() => {
         gsap.from(".animateText", {
             opacity: 0,
@@ -18,26 +20,29 @@ const Home = () => {
             ease: "power3.out",
             stagger: 0.2 // Add stagger effect for each letter
         });
-    })
+    });
+
     useEffect(() => {
         fetch('https://dummyjson.com/quotes/random')
             .then(res => res?.json())
             .then(res => {
-                dispatch(setTodaysQuote(res))
+                dispatch(setTodaysQuote(res));
+                setDisplayedQuote(res.quote); // Update displayed quote
             })
-            .catch(err => console.log(err))
-    }, [])
+            .catch(err => console.log(err));
+    }, []);
+
     return (
         <>
-            <div className='w-full'>
-                <div className=' mx-auto w-[90%] md:w-[85%] text-center text-3xl rounded-t-2xl rounded-b-2xl font-haveletica bg-gradient-to-r from-zinc-800 to-zinc-950 text-white mt-5 sm:text-4xl'>
-                    <p className='  animateText font-bold pt-2 text-pretty tracking-tight'>
+            <div className='w-full '>
+                <div className='mx-auto w-[90%]  md:w-[85%] text-center text-3xl rounded-t-2xl rounded-b-2xl font-haveletica bg-gradient-to-r from-zinc-800 to-zinc-950 text-white mt-5 sm:text-4xl'>
+                    <p className=' animateText font-bold pt-2 text-pretty tracking-tight'>
                         Today's Quote of the Day is :
                     </p>
-                    <h1 className='  animateText px-5 py-2'>
-                        {quotesInfo?.todaysQuote?.quote}
+                    <h1 className=' animateText px-5 py-2'>
+                        {displayedQuote}
                     </h1>
-                    <p className='  animateText px-0 h-11 border-t-black border-t-2 py-1 pr-3 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-b-2xl text-2xl text-end text-black sm:text-3xl overflow-hidden whitespace-nowrap'>
+                    <p className=' animateText px-0 h-11 border-t-black border-t-2 py-1 pr-3 bg-gradient-to-r from-violet-600 to-fuchsia-400 rounded-b-2xl text-2xl text-end text-black sm:text-3xl overflow-hidden whitespace-nowrap'>
                         - {quotesInfo?.todaysQuote?.author}
                     </p>
                 </div>
@@ -50,7 +55,7 @@ const Home = () => {
                 <Quotes />
             </div>
         </>
-    )
-}
+    );
+};
 
-export default Home
+export default Home;

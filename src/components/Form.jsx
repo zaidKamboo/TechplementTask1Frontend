@@ -1,9 +1,12 @@
 import React, { useRef } from 'react';
 import { Typewriter } from 'react-simple-typewriter'
 import { backendServerHost } from '../constants';
+import { useDispatch } from 'react-redux';
+import { setQuotes } from '../Store/slices/quoteSlice';
 
 const Form = () => {
     const authorRef = useRef();
+    const dispatch = useDispatch()
     const quoteRef = useRef();
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -20,6 +23,7 @@ const Form = () => {
             .then(res => res.json())
             .then(res => {
                 console.log(res)
+                dispatch(setQuotes({ quote: res?.quote, one: true }))
                 authorRef.current.value = ""
                 quoteRef.current.value = ""
             })

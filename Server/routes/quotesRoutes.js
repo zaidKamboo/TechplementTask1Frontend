@@ -31,7 +31,7 @@ router.post("/addQuote", async (req, res) => {
         console.log(newQuote);
         return res
             .status(200)
-            .json({ message: "Added quote successfully.", a: "newQuote" });
+            .json({ message: "Added quote successfully.", quote: newQuote });
     } catch (error) {
         return res.status(500).json({ message: error?.message, error });
     }

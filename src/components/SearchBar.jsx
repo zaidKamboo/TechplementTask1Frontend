@@ -16,10 +16,10 @@ const SearchBar = () => {
                     onChange={handleChange}
                     type="text"
                     placeholder="Search Quotes by Author name..."
-                    className="w-full h-10 lg:w-full text-black rounded-s-full py-1 px-3 bg-gradient-to-r from-cyan-700 to-blue-500 focus:outline-none"
+                    className="w-full h-10 text-black lg:w-full  rounded-s-full py-1 px-3 bg-gradient-to-r from-zinc-50 to-teal-500 focus:outline-none"
                 />
-                <button type="submit" className="pr-3 rounded-e-full bg-gradient-to-l from-cyan-700 to-blue-500 sm:mx-auto">
-                    <AiOutlineSearch className="text-black h-10 w-6" />
+                <button type="submit" className="pr-3  rounded-e-full bg-gradient-to-l from-zinc-950 to-teal-500  sm:mx-auto">
+                    <AiOutlineSearch className="text-white h-10 w-6" />
                 </button>
             </div>
         </div>
