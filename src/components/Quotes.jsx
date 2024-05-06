@@ -47,9 +47,9 @@ const Quotes = () => {
             // endMessage={<p>No more quotes to load</p>}
             >
                 {quotes.map((quote, index) => (
-                    <div key={index} className='w-[45%] lg:w-[22%] xl:w-[18%] md:w-[30%] text-center text-2xl h-f flex flex-col justify-between rounded-t-3xl rounded-b-3xl font-haveletica bg-gradient-to-br from-zinc-800 to-zinc-950 text-white ml-4 sm:text-2xl xl:text-xl lg:text-xl'>
-                        <h1 className='px-5 py-2'>{quote.quote}</h1>
-                        <p className='px-0 h-11 border-t-black border-t-2 py-1 pr-3 bg-gradient-to-r from-sky-500 to-indigo-500 text-black rounded-b-2xl text-lg text-end sm:text-xl md:text-lg overflow-hidden whitespace-nowrap'>- {quote.author}</p>
+                    <div key={index} className='w-[45%]  lg:w-[22%] xl:w-[18%] md:w-[30%] text-center text-2xl h-f flex flex-col justify-between rounded-t-3xl rounded-b-3xl font-haveletica bg-gradient-to-br from-zinc-800 to-zinc-950 text-white ml-4 sm:text-2xl xl:text-xl lg:text-xl'>
+                        <h1 className='px-5 py-2 italic'>{quote.quote}</h1>
+                        <p className='px-0 font-medium h-11 border-t-black border-t-2 py-1 pr-3 bg-gradient-to-r from-sky-500 to-indigo-500 text-black rounded-b-2xl text-lg text-end sm:text-xl md:text-lg overflow-hidden whitespace-nowrap'>- {quote.author}</p>
                     </div>
                 ))}
 

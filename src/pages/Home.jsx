@@ -15,11 +15,14 @@ const Home = () => {
     useGSAP(() => {
         gsap.from(".animateText", {
             opacity: 0,
-            y: 100,
-            duration: 2.4,
-            ease: "power3.out",
-            stagger: 0.2 // Add stagger effect for each letter
+            y: 10,
+            rotateX: 90,
+            duration: 3,
         });
+        gsap.to(".animateText", {
+            opacity: 1,
+            duration: 2.8
+        })
     });
 
     useEffect(() => {
@@ -27,9 +30,9 @@ const Home = () => {
             .then(res => res?.json())
             .then(res => {
                 dispatch(setTodaysQuote(res));
-                setDisplayedQuote(res.quote); // Update displayed quote
+                setDisplayedQuote(res.quote);
             })
-            .catch(err => console.log(err));
+            .catch(err => alert(err?.messages));
     }, []);
 
     return (
@@ -39,10 +42,10 @@ const Home = () => {
                     <p className=' animateText font-bold pt-2 text-pretty tracking-tight'>
                         Today's Quote of the Day is :
                     </p>
-                    <h1 className=' animateText px-5 py-2'>
+                    <h1 className='italic animateText px-5 py-2'>
                         {displayedQuote}
                     </h1>
-                    <p className=' animateText px-0 h-11 border-t-black border-t-2 py-1 pr-3 bg-gradient-to-r from-violet-600 to-fuchsia-400 rounded-b-2xl text-2xl text-end text-black sm:text-3xl overflow-hidden whitespace-nowrap'>
+                    <p className='   px-0 h-11 border-t-black border-t-2 py-1 pr-3 bg-gradient-to-r from-violet-600 to-fuchsia-400 rounded-b-2xl text-2xl text-end text-black sm:text-3xl overflow-hidden whitespace-nowrap'>
                         - {quotesInfo?.todaysQuote?.author}
                     </p>
                 </div>
